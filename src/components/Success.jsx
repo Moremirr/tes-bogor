@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import confetti from 'canvas-confetti';
 
 const photos = [
-    '/Untitled design-54.png',
-    '/Untitled design-55.png',
+    '/foto1.png',
+    '/foto2.png',
 ];
 
 const Success = () => {
@@ -55,7 +55,7 @@ const Success = () => {
     useEffect(() => {
         const slideInterval = setInterval(() => {
             setCurrentPhoto((prev) => (prev + 1) % photos.length);
-        }, 3000); // Change photo every 3 seconds
+        }, 3000);
 
         return () => clearInterval(slideInterval);
     }, []);
