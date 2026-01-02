@@ -1,7 +1,14 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import confetti from 'canvas-confetti';
 
+const photos = [
+    '/Untitled design-54.png',
+    '/Untitled design-55.png',
+];
+
 const Success = () => {
+    const [currentPhoto, setCurrentPhoto] = useState(0);
+
     useEffect(() => {
         // Heart-shaped confetti
         const heart = confetti.shapeFromPath({
@@ -23,7 +30,6 @@ const Success = () => {
 
             const particleCount = 80 * (timeLeft / duration);
 
-            // Pink and red hearts
             confetti({
                 ...defaults,
                 particleCount: particleCount / 2,
@@ -45,18 +51,47 @@ const Success = () => {
         return () => clearInterval(interval);
     }, []);
 
+    // Slideshow effect
+    useEffect(() => {
+        const slideInterval = setInterval(() => {
+            setCurrentPhoto((prev) => (prev + 1) % photos.length);
+        }, 3000); // Change photo every 3 seconds
+
+        return () => clearInterval(slideInterval);
+    }, []);
+
     return (
         <div className="glass-container success-container">
             <div className="success-hearts">💕💖💕</div>
             <h1>Yeay! Kamu Mau! 🥰</h1>
+
+            {/* Photo Slideshow */}
+            <div className="photo-slideshow">
+                {photos.map((photo, index) => (
+                    <img
+                        key={index}
+                        src={photo}
+                        alt={`Kenangan ${index + 1}`}
+                        className={`slideshow-photo ${index === currentPhoto ? 'active' : ''}`}
+                    />
+                ))}
+                <div className="slideshow-dots">
+                    {photos.map((_, index) => (
+                        <span
+                            key={index}
+                            className={`dot ${index === currentPhoto ? 'active' : ''}`}
+                            onClick={() => setCurrentPhoto(index)}
+                        />
+                    ))}
+                </div>
+            </div>
+
             <div className="success-message">
                 <p>Terima kasih sudah mau menjadi bagian dari hidupku...</p>
                 <p className="highlight">Aku berjanji akan selalu menjagamu</p>
                 <p>dan membuat setiap harimu penuh dengan kebahagiaan 💫</p>
             </div>
-            <div className="couple-emoji floating">
-                👩‍❤️‍👨
-            </div>
+
             <p className="final-words">
                 Sekarang, kita adalah "kita" ❤️
             </p>
