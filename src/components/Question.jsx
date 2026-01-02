@@ -23,7 +23,7 @@ const Question = ({ onYes }) => {
     return (
         <div className="glass-container question-container">
             <div className="heart-decoration">💗</div>
-            <h2>Maukah kamu menjadi pacarku?</h2>
+            <h2>Maukah kamu menjadi ceweku?</h2>
             <div className="romantic-poem">
                 <p>Setiap hari, aku memikirkanmu...</p>
                 <p>Setiap malam, aku memimpikanmu...</p>
