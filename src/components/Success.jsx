@@ -4,6 +4,8 @@ import confetti from 'canvas-confetti';
 const photos = [
     '/foto1.png',
     '/foto2.png',
+    '/foto3.png',
+    '/foto4.png',
 ];
 
 const Success = () => {
